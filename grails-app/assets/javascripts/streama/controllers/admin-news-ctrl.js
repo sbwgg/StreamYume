@@ -23,10 +23,10 @@ angular.module('streama').controller('adminNewsCtrl', [
     function createNews() {
       // Open modal to create news
       // For simplicity, use prompt or create a modal
-      var title = prompt('Enter news title:');
-      var content = prompt('Enter news content:');
-      if (title && content) {
-        apiService.news.save({title: title, content: content}).then(function (response) {
+      var name = prompt('Enter news name:');
+      var text = prompt('Enter news text:');
+      if (name && text) {
+        apiService.news.save({name: name, text: text}).then(function (response) {
           loadNews();
         });
       }
