@@ -125,6 +125,8 @@ class VideoService {
     String order = params.order
     Long genreId = params.long('genreId')
     List<Long> genreList = params.list('genre')*.toLong() ?: []
+    Boolean isSubtitledParam = params.boolean('isSubtitled')
+    Boolean isDubbedParam = params.boolean('isDubbed')
 
     if(currentProfile?.isChild){
       genreList += Genre.findAllByNameInList(['Kids', 'Family'])*.id
@@ -149,6 +151,12 @@ class VideoService {
           id in genreList
         }
       }
+      if(isSubtitledParam != null){
+        isSubtitled == isSubtitledParam
+      }
+      if(isDubbedParam != null){
+        isDubbed == isDubbedParam
+      }
     }
     def movies =  movieQuery.list(max: max, offset: offset, sort: sort, order: order)
     def totalMovieCount = movieQuery.count()
@@ -167,6 +175,8 @@ class VideoService {
     def order = params.order
     def genreId = params.long('genreId')
     def genreList = params.list('genre')*.toLong() ?: []
+    Boolean isSubtitledParam = params.boolean('isSubtitled')
+    Boolean isDubbedParam = params.boolean('isDubbed')
 
     if(currentProfile?.isChild){
       genreList += Genre.findAllByNameInList(['Kids', 'Family'])*.id
@@ -199,6 +209,12 @@ class VideoService {
         genre{
           id in genreList
         }
+      }
+      if(isSubtitledParam != null){
+        isSubtitled == isSubtitledParam
+      }
+      if(isDubbedParam != null){
+        isDubbed == isDubbedParam
       }
     }
 

@@ -24,6 +24,8 @@ class TvShow implements SimpleInstance {
   String first_air_date
   String original_language
   String imdb_id
+  Boolean isSubtitled = false
+  Boolean isDubbed = false
 
   Double vote_average
   Integer vote_count

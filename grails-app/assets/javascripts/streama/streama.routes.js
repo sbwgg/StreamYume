@@ -30,6 +30,12 @@ angular.module('streama').config(function ($stateProvider) {
 			templateUrl: '/streama/news.htm',
 			controller: 'newsCtrl as vm'
 		})
+		.state('browse', {
+			url: '/browse',
+			templateUrl: '/streama/browse.htm',
+			controller: 'browseCtrl as vm',
+			reloadOnSearch: false
+		})
 		.state('sub-profiles', {
 			url: '/sub-profiles',
 			templateUrl: '/streama/sub-profiles.htm',

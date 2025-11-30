@@ -1,0 +1,68 @@
+<div class="browse-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Browse Content</h1>
+      </div>
+    </div>
+
+    <div class="row filter-section">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="vm.searchQuery" ng-change="vm.applyFilters()" placeholder="Search content...">
+        </div>
+
+        <div class="form-group">
+          <label>Content Type:</label><br>
+          <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" ng-model="vm.filter.showMovies" ng-change="vm.applyFilters()"> Movies
+            </label>
+          </div>
+          <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" ng-model="vm.filter.showTvShows" ng-change="vm.applyFilters()"> TV Shows
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Audio/Subtitles:</label><br>
+          <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" ng-model="vm.filter.isSubtitled" ng-change="vm.applyFilters()"> Subtitled
+            </label>
+          </div>
+          <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" ng-model="vm.filter.isDubbed" ng-change="vm.applyFilters()"> Dubbed
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Genre:</label><br>
+          <ui-select multiple ng-model="vm.filter.genres" theme="bootstrap" title="Select Genres" ng-change="vm.applyFilters()">
+            <ui-select-match placeholder="Select Genres...">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="genre in vm.allGenres | propsFilter: {name: $select.search}">
+              <div ng-bind-html="genre.name | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row content-results">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="item in vm.filteredContent">
+            <streama-dash-media-item entity="item"></streama-dash-media-item>
+          </div>
+        </div>
+        <div class="text-center" ng-if="!vm.filteredContent.length">
+          <p>No content found matching your filters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

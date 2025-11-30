@@ -23,6 +23,8 @@ class Video implements SimpleInstance{
   Integer reportCount
   Boolean deleted = false
   String imdb_id
+  Boolean isSubtitled = false
+  Boolean isDubbed = false
 
   static hasMany = [files: File]
   static simpleInstanceFields = ['overview', 'poster_path:posterPath', 'title']

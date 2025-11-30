@@ -6,6 +6,11 @@
       <span ng-if="vm.entity.status == 'viewing'">Continue: </span>
       <span ng-bind="::(vm.entity.title || vm.entity.show.name || vm.entity.name)"></span>
     </h4>
+    <p ng-if="vm.entity.isSubtitled || vm.entity.isDubbed">
+      <span ng-if="vm.entity.isSubtitled">Sub</span>
+      <span ng-if="vm.entity.isSubtitled && vm.entity.isDubbed"> | </span>
+      <span ng-if="vm.entity.isDubbed">Dub</span>
+    </p>
     <button class=" btn btn-secondary btn-xss complete-watching"
             ng-if="vm.entity.status == 'viewing'" ng-click="vm.markCompleted(vm.entity)">
       {{'DASHBOARD.MARK_COMPLETED' | translate}}</button>
