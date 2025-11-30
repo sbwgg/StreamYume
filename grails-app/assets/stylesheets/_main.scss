@@ -1,6 +1,7 @@
 body {
-  background-color: #25292b;
+  background-color: $secondary;
   color: white;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
 }
 
@@ -132,13 +133,9 @@ h6 {
 
 header.main {
   @include clearfix;
-  background-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1)0%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
+  background: $secondary;
   @include vendor-property("transition", "background 0.5s");
-  padding: 5px 15px;
+  padding: 15px 15px;
 
   .navbar-nav {
     float: right;

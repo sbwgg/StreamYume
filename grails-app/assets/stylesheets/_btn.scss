@@ -21,7 +21,7 @@
 }
 
 .btn-primary{
-  @include btn(darken($primary, 35%));
+  @include btn($primary, white);
   text-shadow:  1px 1px 2px rgba(0, 0, 0, 0.35);
 }
 
