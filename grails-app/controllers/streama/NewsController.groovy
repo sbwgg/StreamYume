@@ -22,6 +22,7 @@ class NewsController {
     respond news
   }
 
+  @Secured(['ROLE_ADMIN', 'ROLE_CONTENT_MANAGER'])
   def save() {
     def news = new News(request.JSON)
     news.save(flush: true)
@@ -46,6 +47,7 @@ class NewsController {
     respond news
   }
 
+  @Secured(['ROLE_ADMIN', 'ROLE_CONTENT_MANAGER'])
   def delete(News news) {
     if (!news || news.deleted) {
       render status: NOT_FOUND
