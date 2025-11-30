@@ -21,14 +21,16 @@ angular.module('streama').controller('adminNewsCtrl', [
     }
 
     function createNews() {
-      // Open modal to create news
-      // For simplicity, use prompt or create a modal
-      var name = prompt('Enter news name:');
-      var text = prompt('Enter news text:');
-      if (name && text) {
-        apiService.news.save({name: name, text: text}).then(function (response) {
-          loadNews();
-        });
+      var input = prompt('Enter news name and text separated by --- (use \\n for new lines):');
+      if (input) {
+        var parts = input.split('---');
+        if (parts.length >= 2) {
+          var name = parts[0].trim();
+          var text = parts.slice(1).join('---').trim();
+          apiService.news.save({name: name, text: text}).then(function (response) {
+            loadNews();
+          });
+        }
       }
     }
 
