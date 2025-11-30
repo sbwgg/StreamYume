@@ -25,6 +25,9 @@
         <li ng-if="$root.settings && !$root.getSetting('hide-dash-sections').parsedValue && $root.getSetting('hide-mylist-button').parsedValue != true">
           <a ng-click="changeDashType('watchlist')" ng-class="{active: (isDashType('watchlist'))}">{{'DASHBOARD.MY_LIST' | translate}}</a>
         </li>
+        <li>
+          <a ui-sref="news">{{'NEWS' | translate}}</a>
+        </li>
         <li class="browse-genres" ng-if="isCurrentState('dash') && genres.length && !$root.currentProfile.isChild">
           <a ng-class="{active: selectedGenre}" ng-click="toggleGenreMenu()">
             <span ng-if="selectedGenre">

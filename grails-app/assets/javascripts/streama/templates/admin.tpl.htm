@@ -25,6 +25,10 @@
       <li ng-class="{'active': isCurrentState('admin.genres')}" ng-if="$root.currentUser.isContentManager">
         <a ui-sref="admin.genres">Genres</a>
       </li>
+      <li ng-class="{'active': isCurrentState('admin.news')}" ng-if="$root.currentUser.isContentManager">
+        <a ui-sref="admin.news">News</a>
+      </li>
+
     </ul>
   </div>
 

@@ -1,0 +1,37 @@
+<ul class="breadcrumb">
+  <li class="active">News</li>
+</ul>
+
+<div class="pull-right">
+  <button class="btn btn-success" ng-click="vm.createNews()">
+    <i class="ion-plus"></i> Add News
+  </button>
+</div>
+
+<h2>News</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="news in vm.newsList">
+        <td>{{news.title}}</td>
+        <td>{{news.dateCreated | date:'medium'}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" ng-click="vm.editNews(news)">
+            <i class="ion-edit"></i> Edit
+          </button>
+          <button class="btn btn-sm btn-danger" ng-click="vm.deleteNews(news)">
+            <i class="ion-trash-a"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -24,6 +24,12 @@ angular.module('streama').config(function ($stateProvider) {
 				currentUser: resolveCurrentUser
 			}
 		})
+
+		.state('news', {
+			url: '/news',
+			templateUrl: '/streama/news.htm',
+			controller: 'newsCtrl as vm'
+		})
 		.state('sub-profiles', {
 			url: '/sub-profiles',
 			templateUrl: '/streama/sub-profiles.htm',
@@ -115,6 +121,13 @@ angular.module('streama').config(function ($stateProvider) {
       url: '/genres',
       templateUrl: '/streama/admin-genres.htm',
       controller: 'adminGenresCtrl',
+      controllerAs: "vm"
+    })
+
+    .state('admin.news', {
+      url: '/news',
+      templateUrl: '/streama/admin-news.htm',
+      controller: 'adminNewsCtrl',
       controllerAs: "vm"
     })
 
