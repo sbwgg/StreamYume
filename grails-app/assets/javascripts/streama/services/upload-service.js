@@ -28,6 +28,17 @@ angular.module('streama').factory('uploadService', function ($http, Upload, cont
 
 				}
 			}
-		}
+		},
+    uploadImage: function (file) {
+      var uploadStatus = {};
+      return Upload.upload({
+        url: contextPath + '/api/upload/image',
+        sendObjectsAsJsonBlob: true,
+        file: file
+      })
+        .progress(function (evt) {
+          uploadStatus.percentage = parseInt(100.0 * evt.loaded / evt.total);
+        });
+    }
 	};
 });

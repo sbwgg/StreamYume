@@ -10,10 +10,15 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="news-list">
           <div class="news-item card" ng-repeat="news in vm.newsList" ng-click="vm.showNews(news)">
-            <div class="card-body">
-              <h3 class="card-title">{{news.title}}</h3>
-              <p class="card-text" style="white-space: pre-wrap;">{{news.content | limitTo: 200}}{{news.content.length > 200 ? '...' : ''}}</p>
-              <small class="text-muted">{{news.dateCreated | date:'medium'}}</small>
+            <div class="card-body row">
+              <div ng-if="news.imagePath" class="col-md-4">
+                <img ng-src="{{news.imagePath}}" class="img-responsive" alt="News Image" style="max-height: 100px; object-fit: cover; width: 100%;">
+              </div>
+              <div ng-class="{'col-md-8': news.imagePath, 'col-md-12': !news.imagePath}">
+                <h3 class="card-title">{{news.title}}</h3>
+                <p class="card-text news-card-content" style="white-space: pre-wrap; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">{{news.content | limitTo: 200}}{{news.content.length > 200 ? '...' : ''}}</p>
+                <small class="text-muted">{{news.dateCreated | date:'medium'}}</small>
+              </div>
             </div>
           </div>
         </div>

@@ -20,7 +20,8 @@ function modalService($uibModal, $state) {
 		mediaDetailModal: mediaDetailModal,
 		openPlaybackOptions: openPlaybackOptions,
 		createFromFilesModal: createFromFilesModal,
-    openImageChooser: openImageChooser
+    openImageChooser: openImageChooser,
+    newsModal: newsModal
 	};
 
 	function tvShowModal (tvShow, callback) {
@@ -330,4 +331,22 @@ function modalService($uibModal, $state) {
 
 		return modalInstance.result;
 	}
+
+  function newsModal (news, callback) {
+    var modalInstance = $uibModal.open({
+      templateUrl: '/streama/modal--news.htm',
+      controller: 'modalNewsCtrl',
+      controllerAs: 'vm',
+      size: 'lg',
+      resolve: {
+        news: function () {
+          return news;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (data) {
+      (callback || angular.noop)(data);
+    });
+  }
 }

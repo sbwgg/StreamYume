@@ -1,5 +1,5 @@
 angular.module('streama').controller('adminNewsCtrl', [
-  'apiService', '$state', '$rootScope', '$filter', function (apiService, $state, $rootScope, $filter) {
+  'apiService', '$state', '$rootScope', '$filter', 'modalService', function (apiService, $state, $rootScope, $filter, modalService) {
     var vm = this;
 
     vm.newsList = [];
@@ -21,27 +21,15 @@ angular.module('streama').controller('adminNewsCtrl', [
     }
 
     function createNews() {
-      var input = prompt('Enter news name and text separated by --- (use \\n for new lines):');
-      if (input) {
-        var parts = input.split('---');
-        if (parts.length >= 2) {
-          var name = parts[0].trim();
-          var text = parts.slice(1).join('---').trim();
-          apiService.news.save({name: name, text: text}).then(function (response) {
-            loadNews();
-          });
-        }
-      }
+      modalService.newsModal({}, function (data) {
+        loadNews();
+      });
     }
 
     function editNews(news) {
-      var title = prompt('Edit title:', news.title);
-      var content = prompt('Edit content:', news.content);
-      if (title && content) {
-        apiService.news.update(news.id, {title: title, content: content}).then(function (response) {
-          loadNews();
-        });
-      }
+      modalService.newsModal(angular.copy(news), function (data) {
+        loadNews();
+      });
     }
 
     function deleteNews(news) {
