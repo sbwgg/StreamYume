@@ -7,8 +7,7 @@ angular.module('streama').controller('browseCtrl', [
     vm.filter = {
       showMovies: true,
       showTvShows: true,
-      isSubtitled: false,
-      isDubbed: false,
+      audioFilter: 'any',
       genres: []
     };
     vm.filteredContent = [];

@@ -28,16 +28,12 @@
 
         <div class="form-group">
           <label>Audio/Subtitles:</label><br>
-          <div class="checkbox-inline">
-            <label>
-              <input type="checkbox" ng-model="vm.filter.isSubtitled" ng-change="vm.applyFilters()"> Subtitled
-            </label>
-          </div>
-          <div class="checkbox-inline">
-            <label>
-              <input type="checkbox" ng-model="vm.filter.isDubbed" ng-change="vm.applyFilters()"> Dubbed
-            </label>
-          </div>
+          <select class="form-control" ng-model="vm.filter.audioFilter" ng-change="vm.applyFilters()">
+            <option value="any">Any</option>
+            <option value="subbed">Subbed</option>
+            <option value="dubbed">Dubbed</option>
+            <option value="both">Both</option>
+          </select>
         </div>
 
         <div class="form-group">
