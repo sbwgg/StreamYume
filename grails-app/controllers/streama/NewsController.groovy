@@ -1,4 +1,4 @@
-package streama
++package streama
 
 import grails.converters.JSON
 import static org.springframework.http.HttpStatus.*
@@ -33,6 +33,7 @@ class NewsController {
     respond news, status: CREATED
   }
 
+  @Secured(['ROLE_ADMIN', 'ROLE_CONTENT_MANAGER'])
   def update(News news) {
     if (!news || news.deleted) {
       render status: NOT_FOUND
