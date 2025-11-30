@@ -270,6 +270,25 @@ angular.module('streama').factory('apiService', function ($http, $rootScope, con
 			}
 		},
 
+		news: {
+			list: function () {
+				return $http.get('news/index.json');
+			},
+			show: function (id) {
+				return $http.get('news/show.json', {params: {id: id}});
+			},
+			save: function (data) {
+				return $http.post('news/save.json', data);
+			},
+			update: function (id, data) {
+				var params = angular.extend({id: id}, data);
+				return $http.put('news/update.json', params);
+			},
+			delete: function (id) {
+				return $http.delete('news/delete.json', {params: {id: id}});
+			}
+		},
+
     settings: {
 			list: function () {
 				return $http.get('settings.json');
