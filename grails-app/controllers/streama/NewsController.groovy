@@ -1,6 +1,7 @@
 package streama
 
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
 import static org.springframework.http.HttpStatus.*
 
 class NewsController {
