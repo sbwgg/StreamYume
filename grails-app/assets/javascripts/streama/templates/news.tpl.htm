@@ -11,8 +11,8 @@
         <div class="news-list">
           <div class="news-item card" ng-repeat="news in vm.newsList" ng-click="vm.showNews(news)">
             <div class="card-body">
-              <h3 class="card-title">{{news.name}}</h3>
-              <p class="card-text" style="white-space: pre-wrap;">{{news.text | limitTo: 200}}{{news.text.length > 200 ? '...' : ''}}</p>
+              <h3 class="card-title">{{news.title}}</h3>
+              <p class="card-text" style="white-space: pre-wrap;">{{news.content | limitTo: 200}}{{news.content.length > 200 ? '...' : ''}}</p>
               <small class="text-muted">{{news.dateCreated | date:'medium'}}</small>
             </div>
           </div>
@@ -25,8 +25,11 @@
         <div class="news-detail card">
           <div class="card-body">
             <button class="btn btn-primary" ng-click="vm.backToList()">{{'BACK' | translate}}</button>
-            <h2>{{vm.selectedNews.name}}</h2>
-            <p style="white-space: pre-wrap;">{{vm.selectedNews.text}}</p>
+            <div ng-if="vm.selectedNews.imagePath">
+              <img ng-src="{{vm.selectedNews.imagePath}}" class="img-responsive" alt="News Image" style="max-width: 100%; margin-bottom: 20px;">
+            </div>
+            <h2>{{vm.selectedNews.title}}</h2>
+            <p style="white-space: pre-wrap;">{{vm.selectedNews.content}}</p>
             <small class="text-muted">{{vm.selectedNews.dateCreated | date:'medium'}}</small>
           </div>
         </div>

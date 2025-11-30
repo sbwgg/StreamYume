@@ -7,6 +7,7 @@ class News {
 
   String title
   String content
+  String imagePath
   Boolean deleted = false
 
   static constraints = {
