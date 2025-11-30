@@ -1,0 +1,32 @@
+<div class="news-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{'NEWS' | translate}}</h1>
+      </div>
+    </div>
+
+    <div class="row" ng-if="!vm.selectedNews">
+      <div class="col-md-12">
+        <div class="news-list">
+          <div class="news-item" ng-repeat="news in vm.newsList" ng-click="vm.showNews(news)">
+            <h3>{{news.name}}</h3>
+            <p>{{news.text | limitTo: 200}}...</p>
+            <small>{{news.dateCreated | date:'medium'}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-if="vm.selectedNews">
+      <div class="col-md-12">
+        <div class="news-detail">
+          <button class="btn btn-default" ng-click="vm.backToList()">{{'BACK' | translate}}</button>
+          <h2>{{vm.selectedNews.name}}</h2>
+          <p>{{vm.selectedNews.text}}</p>
+          <small>{{vm.selectedNews.dateCreated | date:'medium'}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
