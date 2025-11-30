@@ -1,4 +1,4 @@
-+package streama
+package streama
 
 import grails.converters.JSON
 import static org.springframework.http.HttpStatus.*
